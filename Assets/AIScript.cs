@@ -41,6 +41,7 @@ public class AIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         // Initialize the AI's state
         m_PlayerPosition = Vector3.zero;
         m_IsPatrol = true; // Start in patrol mode
@@ -51,7 +52,6 @@ public class AIScript : MonoBehaviour
 
         m_CurrentWaypointIndex = 0; // Start at the first waypoint
         navMeshAgent = GetComponent<NavMeshAgent>(); // Get the NavMeshAgent component
-        navMeshAgent.baseOffset = 0.2f;
         navMeshAgent.isStopped = false; // Ensure the agent is moving
         navMeshAgent.speed = speedWalk; // Set initial speed to walking speed
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position); // Move to the first waypoint
