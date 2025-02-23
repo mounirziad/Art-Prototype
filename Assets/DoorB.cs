@@ -1,19 +1,31 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI; // Required for UI elements
 
 public class DoorB : MonoBehaviour
 {
     [SerializeField] private Animator myDoor = null;
-    private bool hasTriggered = false; // Prevent multiple activations
-    private bool playerInTrigger = false; // Track if player is in the trigger
-    [SerializeField] private AudioSource doorAudio = null; // Reference to AudioSource
-    [SerializeField] private AudioClip doorSound; // Assign in Inspector
+    private bool hasTriggered = false;
+    private bool playerInTrigger = false;
+
+    [SerializeField] private AudioSource doorAudio = null;
+    [SerializeField] private AudioClip doorSound;
+
+    [SerializeField] private GameObject uiPromptImage; // Reference to UI Image GameObject
+
+    private void Start()
+    {
+        if (uiPromptImage != null)
+            uiPromptImage.SetActive(false); // Ensure UI prompt is hidden initially
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInTrigger = true; // Mark player inside trigger
+            playerInTrigger = true;
+            if (uiPromptImage != null)
+                uiPromptImage.SetActive(true); // Show UI Image Prompt
         }
     }
 
@@ -21,7 +33,9 @@ public class DoorB : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInTrigger = false; // Mark player outside trigger
+            playerInTrigger = false;
+            if (uiPromptImage != null)
+                uiPromptImage.SetActive(false); // Hide UI Image Prompt when player leaves
         }
     }
 
@@ -30,6 +44,9 @@ public class DoorB : MonoBehaviour
         if (playerInTrigger && !hasTriggered && Input.GetKeyDown(KeyCode.E))
         {
             hasTriggered = true;
+            if (uiPromptImage != null)
+                uiPromptImage.SetActive(false); // Hide UI Image Prompt after interaction
+
             StartCoroutine(OpenAndCloseDoor());
         }
     }
@@ -37,12 +54,12 @@ public class DoorB : MonoBehaviour
     private IEnumerator OpenAndCloseDoor()
     {
         doorAudio.PlayOneShot(doorSound);
-        yield return new WaitForSeconds(4f); // Wait before opening
+        yield return new WaitForSeconds(4f);
         myDoor.Play("DoorOpen", 0, 0.0f);
 
-        yield return new WaitForSeconds(4f); // Wait before closing
+        yield return new WaitForSeconds(4f);
         myDoor.Play("DoorClose", 0, 0.0f);
 
-        gameObject.SetActive(false); // Disable trigger after activation (optional)
+        gameObject.SetActive(false);
     }
 }
