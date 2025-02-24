@@ -9,6 +9,7 @@ public class PlayButton : MonoBehaviour
     public Button playButton;
     public Button creditsButton;
     public Button mainMenuButton;
+    public Button quitButton;
 
     public GameObject MainMenu;
     public GameObject Credits;
@@ -20,6 +21,7 @@ public class PlayButton : MonoBehaviour
         playButton.onClick.AddListener(play);
         creditsButton.onClick.AddListener(credits);
         mainMenuButton.onClick.AddListener(mainMenu);
+        quitButton.onClick.AddListener(exit);
     }
 
     // Update is called once per frame
@@ -46,6 +48,12 @@ public class PlayButton : MonoBehaviour
     {
         MainMenu.gameObject.SetActive(true);
         Credits.gameObject.SetActive(false);
+    }
+
+    void exit()
+    {
+        Application.Quit();
+        Debug.Log("Application Quit");
     }
 
 }

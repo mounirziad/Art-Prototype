@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 486025096}
   - component: {fileID: 486025095}
   m_Layer: 5
-  m_Name: ExitButtonText
+  m_Name: QuitButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -852,7 +852,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: 'Quit
+
+'
 --- !u!222 &486025096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1090,6 +1092,7 @@ MonoBehaviour:
   playButton: {fileID: 1899554852}
   creditsButton: {fileID: 281162265}
   mainMenuButton: {fileID: 2003136408}
+  quitButton: {fileID: 1975761887}
   MainMenu: {fileID: 349074723}
   Credits: {fileID: 1213860592}
 --- !u!1 &1213860592
@@ -1515,7 +1518,7 @@ GameObject:
   - component: {fileID: 1975761888}
   - component: {fileID: 1975761887}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
