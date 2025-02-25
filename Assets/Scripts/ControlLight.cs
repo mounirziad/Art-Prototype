@@ -17,8 +17,14 @@ public class ControlLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BaseMusic == null)
+        StartCoroutine(changelight());
+    }
+
+    private IEnumerator changelight()
+    {
+        if (BaseMusic == null)
         {
+            yield return new WaitForSeconds(2f);
             directionalLight.intensity -= 0.5f;
         }
     }

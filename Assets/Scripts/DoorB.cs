@@ -73,7 +73,7 @@ public class DoorB : MonoBehaviour
         doorAudio.Stop();
         Destroy(BaseMusic);
         Instantiate(ThunderStrike);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Instantiate(sneakmusic);
         gameObject.SetActive(false);
     }
