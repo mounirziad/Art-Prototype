@@ -10,8 +10,15 @@ public class DoorB : MonoBehaviour
 
     [SerializeField] private AudioSource doorAudio = null;
     [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioSource dadtalking = null;
+    [SerializeField] private AudioClip dadSound;
+    [SerializeField] private GameObject sneakmusic;
+    [SerializeField] private GameObject ThunderStrike;
+    [SerializeField] private GameObject BaseMusic; 
 
     [SerializeField] private GameObject uiPromptImage; // Reference to UI Image GameObject
+
+
 
     private void Start()
     {
@@ -51,15 +58,25 @@ public class DoorB : MonoBehaviour
         }
     }
 
+    
+
     private IEnumerator OpenAndCloseDoor()
     {
         doorAudio.PlayOneShot(doorSound);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        dadtalking.PlayOneShot(dadSound);
+        yield return new WaitForSeconds(2f);
         myDoor.Play("DoorOpen", 0, 0.0f);
-
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(7f);
         myDoor.Play("DoorClose", 0, 0.0f);
-
+        yield return new WaitForSeconds(1f);
+        doorAudio.Stop();
+        Destroy(BaseMusic);
+        Instantiate(ThunderStrike);
+        yield return new WaitForSeconds(2f);
+        Instantiate(sneakmusic);
         gameObject.SetActive(false);
     }
+
+    
 }
