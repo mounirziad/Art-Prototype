@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class ControlLight : MonoBehaviour
 {
-
     private Light directionalLight;
     [SerializeField] private GameObject BaseMusic;
-    // Start is called before the first frame update
+    private bool hasReducedLight = false; // Ensure it runs only once
+
     void Start()
     {
         directionalLight = GetComponent<Light>();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        StartCoroutine(changelight());
+        if (BaseMusic == null && !hasReducedLight)
+        {
+            StartCoroutine(ChangeLight());
+            hasReducedLight = true; // Prevent multiple calls
+        }
     }
 
-    private IEnumerator changelight()
+    private IEnumerator ChangeLight()
     {
-        if (BaseMusic == null)
+        yield return new WaitForSeconds(2f);
+
+        if (directionalLight != null)
         {
-            yield return new WaitForSeconds(2f);
-            directionalLight.intensity -= 0.5f;
+            directionalLight.intensity = Mathf.Max(0, directionalLight.intensity - 2.5f); // Prevents negative intensity
         }
     }
 }
