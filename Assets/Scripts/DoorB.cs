@@ -67,7 +67,7 @@ public class DoorB : MonoBehaviour
         dadtalking.PlayOneShot(dadSound);
         yield return new WaitForSeconds(2f);
         myDoor.Play("DoorOpen", 0, 0.0f);
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(9f);
         myDoor.Play("DoorClose", 0, 0.0f);
         yield return new WaitForSeconds(1f);
         doorAudio.Stop();
