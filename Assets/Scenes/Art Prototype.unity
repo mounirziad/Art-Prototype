@@ -5465,7 +5465,7 @@ MonoBehaviour:
   startWaitTime: 0
   speedWalk: 0.5
   speedRun: 1.5
-  viewRadius: 2
+  viewRadius: 6
   viewAngle: 90
   playerMask:
     serializedVersion: 2
