@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -11,9 +12,18 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        // Set up the Input System
+        playerInput = GetComponent<PlayerInput>();
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
     }
 
     void Update()
@@ -25,25 +35,9 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f; // Small negative value to keep the player grounded
         }
 
-        // Get input for movement using KeyCode
-        Vector3 move = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            move += transform.forward;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            move -= transform.forward;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            move -= transform.right;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            move += transform.right;
-        }
+        // Get input for movement using the Input System
+        Vector2 moveInput = moveAction.ReadValue<Vector2>();
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
 
         // Normalize the movement vector to maintain consistent speed
         if (move.magnitude > 1)
@@ -54,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (jumpAction.triggered && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -63,6 +57,4 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
-
 }
