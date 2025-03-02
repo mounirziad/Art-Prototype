@@ -16827,9 +16827,9 @@ GameObject:
   - component: {fileID: 2113073419}
   - component: {fileID: 2113073418}
   - component: {fileID: 2113073423}
-  - component: {fileID: 2113073422}
   - component: {fileID: 2113073424}
   - component: {fileID: 2113073425}
+  - component: {fileID: 2113073426}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -16926,21 +16926,6 @@ Transform:
   - {fileID: 991205823}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2113073422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113073417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b620e75b88be44647ae129cc0f995037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpHeight: 0.5
-  gravity: -9.81
 --- !u!143 &2113073423
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16992,6 +16977,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39985888880cfb54fb2b8668bceef6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2113073426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113073417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712761a60648dad43a1082aff276d01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpHeight: 0.5
+  gravity: -9.81
 --- !u!1001 &2123599435
 PrefabInstance:
   m_ObjectHideFlags: 0
