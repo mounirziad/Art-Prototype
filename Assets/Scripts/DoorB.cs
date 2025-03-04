@@ -83,10 +83,10 @@ public class DoorB : MonoBehaviour
         Instantiate(ThunderStrike);
 
         // Adjust light intensities
-        if (light1 != null) light1.intensity = 0f; // Example: Turn off light1
-        if (light2 != null) light2.intensity = 0f; // Example: Turn off light2
-        if (light3 != null) light3.intensity = 0f; // Example: Increase intensity of light3
-        if (light4 != null) light4.intensity = 0f; // Example: Increase intensity of light4
+        if (light1 != null) light1.intensity = 0f; 
+        if (light2 != null) light2.intensity = 0f; 
+        if (light3 != null) light3.intensity = 0f; 
+        if (light4 != null) light4.intensity = 0f; 
 
         if (ceilingFan != null)
         {
