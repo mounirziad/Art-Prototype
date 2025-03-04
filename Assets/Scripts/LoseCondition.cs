@@ -8,7 +8,7 @@ public class LoseCondition : MonoBehaviour
     public void RestartScene()
     {
         Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Debugging
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Lose Screen");
     }
 
     private void OnTriggerEnter(Collider other) // Change to Collider
