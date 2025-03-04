@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
 
+    public Camera playerCamera; // Reference to the camera
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -24,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
+
+        // Ensure the camera is assigned
+        if (playerCamera == null)
+        {
+            playerCamera = Camera.main;
+        }
     }
 
     void Update()
@@ -37,7 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Get input for movement using the Input System
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+
+        // Calculate movement direction relative to the camera
+        Vector3 move = playerCamera.transform.right * moveInput.x + playerCamera.transform.forward * moveInput.y;
+        move.y = 0; // Ensure the movement is horizontal
 
         // Normalize the movement vector to maintain consistent speed
         if (move.magnitude > 1)

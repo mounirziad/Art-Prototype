@@ -1,32 +1,57 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-    public Transform playerBody;
-    private float xRotation = 0f;
+    private Player playerInput;
+    private Vector2 lookInput;
 
-    void Start()
+    public float mouseSensitivityX = 2.0f;
+    public float mouseSensitivityY = 2.0f;
+    public float controllerSensitivityX = 50.0f; // Higher sensitivity for controller
+    public float controllerSensitivityY = 50.0f; // Higher sensitivity for controller
+
+    public float upperLookLimit = 80f;
+    public float lowerLookLimit = 80f;
+
+    private float currentX = 0f;
+    private float currentY = 0f;
+
+    private void Awake()
     {
-        // lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Initialize the input system
+        playerInput = new Player();
+        playerInput.Enable(); // Enable the input actions
     }
 
-    void Update()
+    private void Update()
     {
-        // mouse listener
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        // Read the look input from the mouse or controller
+        lookInput = playerInput.PlayerControls.Look.ReadValue<Vector2>();
 
-        // up and down rotation
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        // Determine if the input is from a mouse or controller
+        bool isMouseInput = true; // Default to mouse input
+        if (playerInput.PlayerControls.Look.activeControl != null)
+        {
+            isMouseInput = playerInput.PlayerControls.Look.activeControl.device is Mouse;
+        }
 
-        // apply
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // Scale the input based on the device
+        float sensitivityX = isMouseInput ? mouseSensitivityX : controllerSensitivityX;
+        float sensitivityY = isMouseInput ? mouseSensitivityY : controllerSensitivityY;
 
-        // rotate player body to match rotation of camera on X plane
-        playerBody.Rotate(Vector3.up * mouseX);
+        // Update the camera rotation based on input
+        currentX += lookInput.x * sensitivityX * Time.deltaTime;
+        currentY -= lookInput.y * sensitivityY * Time.deltaTime;
+        currentY = Mathf.Clamp(currentY, -upperLookLimit, lowerLookLimit);
+
+        // Apply the rotations to the camera
+        transform.localRotation = Quaternion.Euler(currentY, currentX, 0);
+    }
+
+    private void OnDestroy()
+    {
+        // Disable the input actions when the object is destroyed
+        playerInput.Disable();
     }
 }

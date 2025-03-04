@@ -10284,8 +10284,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2888af6457518340a89c9911fc5f94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 300
-  playerBody: {fileID: 2113073421}
+  mouseSensitivityX: 15
+  mouseSensitivityY: 15
+  controllerSensitivityX: 50
+  controllerSensitivityY: 50
+  upperLookLimit: 60
+  lowerLookLimit: 60
 --- !u!114 &991205825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19765,6 +19769,7 @@ MonoBehaviour:
   speed: 5
   jumpHeight: 1
   gravity: -9.81
+  playerCamera: {fileID: 0}
 --- !u!143 &2113073423
 CharacterController:
   m_ObjectHideFlags: 0
@@ -19830,7 +19835,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1001 &2123599435
