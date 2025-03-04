@@ -10286,8 +10286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivityX: 15
   mouseSensitivityY: 15
-  controllerSensitivityX: 50
-  controllerSensitivityY: 50
+  controllerSensitivityX: 100
+  controllerSensitivityY: 100
   upperLookLimit: 60
   lowerLookLimit: 60
 --- !u!114 &991205825

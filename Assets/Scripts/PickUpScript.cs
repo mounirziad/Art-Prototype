@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickUpScript : MonoBehaviour
 {
@@ -18,6 +17,10 @@ public class PickUpScript : MonoBehaviour
     // Layer mask that will ignore the player's collider during raycast
     private int layerMask;
 
+    // Input System
+    private Player playerInput;
+    private InputAction interactAction;
+
     void Start()
     {
         // Set the layer for held objects 
@@ -26,11 +29,19 @@ public class PickUpScript : MonoBehaviour
         // Create a layer mask that ignores the "Player" layer.
         // The ~ (bitwise NOT) operator inverts the mask.
         layerMask = ~LayerMask.GetMask("Player");
+
+        // Initialize the Input System
+        playerInput = new Player();
+        playerInput.Enable();
+
+        // Get the Interact action
+        interactAction = playerInput.PlayerControls.Interact;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        // Check if the Interact action was triggered
+        if (interactAction.triggered)
         {
             if (heldObj == null)
             {
@@ -146,5 +157,11 @@ public class PickUpScript : MonoBehaviour
             // Adjust position if the raycast is hitting something other than the held object
             heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f);
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Disable the Input System when the object is destroyed
+        playerInput.Disable();
     }
 }
