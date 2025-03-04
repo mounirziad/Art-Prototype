@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem; // Required for Input System
 using UnityEngine.UI; // Required for UI elements
 
 public class DoorB : MonoBehaviour
@@ -28,10 +29,21 @@ public class DoorB : MonoBehaviour
     [SerializeField] private Light light3;
     [SerializeField] private Light light4;
 
+    // Input System
+    private Player playerInput;
+    private InputAction interactAction;
+
     private void Start()
     {
         if (uiPromptImage != null)
             uiPromptImage.SetActive(false); // Ensure UI prompt is hidden initially
+
+        // Initialize the Input System
+        playerInput = new Player();
+        playerInput.Enable();
+
+        // Get the Interact action
+        interactAction = playerInput.PlayerControls.Interact;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +68,8 @@ public class DoorB : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && !hasTriggered && Input.GetKeyDown(KeyCode.E))
+        // Check if the Interact action was triggered (E on keyboard or X on controller)
+        if (playerInTrigger && !hasTriggered && interactAction.triggered)
         {
             hasTriggered = true;
             if (uiPromptImage != null)
@@ -83,10 +96,10 @@ public class DoorB : MonoBehaviour
         Instantiate(ThunderStrike);
 
         // Adjust light intensities
-        if (light1 != null) light1.intensity = 0f; 
-        if (light2 != null) light2.intensity = 0f; 
-        if (light3 != null) light3.intensity = 0f; 
-        if (light4 != null) light4.intensity = 0f; 
+        if (light1 != null) light1.intensity = 0f;
+        if (light2 != null) light2.intensity = 0f;
+        if (light3 != null) light3.intensity = 0f;
+        if (light4 != null) light4.intensity = 0f;
 
         if (ceilingFan != null)
         {
@@ -111,5 +124,11 @@ public class DoorB : MonoBehaviour
         Instantiate(sneakmusic);
 
         gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        // Disable the Input System when the object is destroyed
+        playerInput.Disable();
     }
 }

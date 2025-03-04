@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TriggerDoorController : MonoBehaviour
 {
@@ -10,6 +9,20 @@ public class TriggerDoorController : MonoBehaviour
     [SerializeField] private bool CloseTrigger = false;
 
     private bool playerInsideTrigger = false;
+
+    // Input System
+    private Player playerInput;
+    private InputAction interactAction;
+
+    private void Awake()
+    {
+        // Initialize the Input System
+        playerInput = new Player();
+        playerInput.Enable();
+
+        // Get the Interact action
+        interactAction = playerInput.PlayerControls.Interact;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +42,8 @@ public class TriggerDoorController : MonoBehaviour
 
     private void Update()
     {
-        if (playerInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        // Check if the Interact action was triggered (E on keyboard or X on controller)
+        if (playerInsideTrigger && interactAction.triggered)
         {
             if (OpenTrigger)
             {
@@ -42,5 +56,11 @@ public class TriggerDoorController : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Disable the Input System when the object is destroyed
+        playerInput.Disable();
     }
 }
