@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem; // Add this namespace
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class UIController : MonoBehaviour
     public GameObject settingsMenuUI;
     private bool isPaused = false;
 
+    public InputActionReference pauseAction; // Reference to the Pause action
+
     void Start()
     {
         resumeButton.onClick.AddListener(ResumeGame);
@@ -21,17 +24,35 @@ public class UIController : MonoBehaviour
         backButton.onClick.AddListener(Back);
         quitButton.onClick.AddListener(QuitToMainMenu);
         ResumeGame(); // Ensure the game starts unpaused
+
+        // Enable the Pause action and subscribe to its performed event
+        if (pauseAction != null)
+        {
+            pauseAction.action.Enable();
+            pauseAction.action.performed += OnPausePerformed;
+        }
+        else
+        {
+            Debug.LogError("Pause action is not assigned!");
+        }
     }
 
-    void Update()
+    void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Unsubscribe from the event to avoid memory leaks
+        if (pauseAction != null)
         {
-            if (isPaused)
-                ResumeGame();
-            else
-                PauseGame();
+            pauseAction.action.performed -= OnPausePerformed;
         }
+    }
+
+    private void OnPausePerformed(InputAction.CallbackContext context)
+    {
+        // Toggle pause when the action is performed
+        if (isPaused)
+            ResumeGame();
+        else
+            PauseGame();
     }
 
     public void PauseGame()
@@ -62,6 +83,7 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f; // Ensure time resumes before loading
         SceneManager.LoadScene("Main Menu");
     }
+
     public void Settings()
     {
         pauseMenuUI.SetActive(false);
