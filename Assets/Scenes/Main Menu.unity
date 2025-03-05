@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -384,7 +384,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7490196, g: 0.12941177, b: 0.12941177, a: 1}
     m_PressedColor: {r: 0.6132076, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.72327036, g: 0.28885317, b: 0.28885317, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1106,6 +1106,55 @@ MonoBehaviour:
   quitButton: {fileID: 1975761887}
   MainMenu: {fileID: 349074723}
   Credits: {fileID: 1213860592}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: acc4fcec-ae88-45da-ac08-b6a288e6c48d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 0460ab57-553b-4dbd-b0b4-9b3db29b33bb
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 4b1d3fe7-c367-42a3-a13c-9453c062cbc0
+      m_Path: <XInputController>/dpad/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 5e159818-4405-463d-abe1-27329cfb2922
+      m_Path: <XInputController>/dpad/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: a6a19ef2-eb83-45ae-80e9-23ae3c53b4d7
+      m_Path: <XInputController>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 2ec630b5-4df0-4608-8f2a-8a332d6d84bd
+      m_Path: <XInputController>/dpad/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
 --- !u!1 &1213860592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1352,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_PointAction: {fileID: 497345570730971940, guid: 1bee002a2f57629408145ed650842477, type: 3}
-  m_MoveAction: {fileID: -2435207522804861427, guid: 1bee002a2f57629408145ed650842477, type: 3}
+  m_MoveAction: {fileID: -2746351942956516520, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_SubmitAction: {fileID: 2746734654801819467, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_CancelAction: {fileID: 0}
   m_LeftClickAction: {fileID: -5783307235428674280, guid: 1bee002a2f57629408145ed650842477, type: 3}
@@ -1492,7 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1503,7 +1552,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7490196, g: 0.12941177, b: 0.12941177, a: 1}
     m_PressedColor: {r: 0.6117647, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.72327036, g: 0.28885317, b: 0.28885317, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1613,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1624,7 +1673,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7490196, g: 0.12941177, b: 0.12941177, a: 1}
     m_PressedColor: {r: 0.6132076, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.72327036, g: 0.28885317, b: 0.28885317, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
