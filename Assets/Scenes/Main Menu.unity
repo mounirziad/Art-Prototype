@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1899554850}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1222169716
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_PointAction: {fileID: 497345570730971940, guid: 1bee002a2f57629408145ed650842477, type: 3}
-  m_MoveAction: {fileID: -2746351942956516520, guid: 1bee002a2f57629408145ed650842477, type: 3}
+  m_MoveAction: {fileID: -2435207522804861427, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_SubmitAction: {fileID: 2746734654801819467, guid: 1bee002a2f57629408145ed650842477, type: 3}
   m_CancelAction: {fileID: 0}
   m_LeftClickAction: {fileID: -5783307235428674280, guid: 1bee002a2f57629408145ed650842477, type: 3}
