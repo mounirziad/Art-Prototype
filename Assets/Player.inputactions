@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "ede58b94-b9d9-4e51-9a8b-c8fcdb087b0a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -331,6 +340,17 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37324cd8-3bd7-4e09-9c09-bd891164830d",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -363,7 +383,7 @@
                 {
                     "name": "up",
                     "id": "a98e4ba7-3caf-4064-9e7d-6404ef498e63",
-                    "path": "<XInputController>/leftStick/up",
+                    "path": "<XInputController>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -374,7 +394,7 @@
                 {
                     "name": "down",
                     "id": "f9ab26fa-c7c1-4238-9c1e-1b641101cd43",
-                    "path": "<XInputController>/leftStick/down",
+                    "path": "<XInputController>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -385,7 +405,7 @@
                 {
                     "name": "left",
                     "id": "353abb71-8b0e-4342-847f-24ec927183c0",
-                    "path": "<XInputController>/leftStick/left",
+                    "path": "<XInputController>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -396,7 +416,7 @@
                 {
                     "name": "right",
                     "id": "dd89dacd-4b9d-46dc-8ed7-23500e1ac738",
-                    "path": "<XInputController>/leftStick/right",
+                    "path": "<XInputController>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
