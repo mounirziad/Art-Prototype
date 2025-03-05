@@ -8,12 +8,17 @@ public class UIController : MonoBehaviour
 {
     public Button quitButton;
     public Button resumeButton;
+    public Button settingsButton;
+    public Button backButton;
     public GameObject pauseMenuUI;
+    public GameObject settingsMenuUI;
     private bool isPaused = false;
 
     void Start()
     {
         resumeButton.onClick.AddListener(ResumeGame);
+        settingsButton.onClick.AddListener(Settings);
+        backButton.onClick.AddListener(Back);
         quitButton.onClick.AddListener(QuitToMainMenu);
         ResumeGame(); // Ensure the game starts unpaused
     }
@@ -43,6 +48,7 @@ public class UIController : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
 
@@ -55,5 +61,16 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1f; // Ensure time resumes before loading
         SceneManager.LoadScene("Main Menu");
+    }
+    public void Settings()
+    {
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
+    }
+
+    public void Back()
+    {
+        pauseMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
     }
 }
