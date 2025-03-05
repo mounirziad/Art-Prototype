@@ -27,7 +27,7 @@ public class PlayButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Function that loads the first level
@@ -42,7 +42,7 @@ public class PlayButton : MonoBehaviour
         MainMenu.gameObject.SetActive(false);
         Credits.gameObject.SetActive(true);
     }
-    
+
     //Function that loads the menu scene
     void mainMenu()
     {
