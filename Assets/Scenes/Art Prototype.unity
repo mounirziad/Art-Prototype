@@ -2528,6 +2528,9 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 143367864}
   settingsMenuUI: {fileID: 688866199}
   pauseAction: {fileID: 5036360105176824355, guid: 1bee002a2f57629408145ed650842477, type: 3}
+  navigateAction: {fileID: -2746351942956516520, guid: 1bee002a2f57629408145ed650842477, type: 3}
+  submitAction: {fileID: 2746734654801819467, guid: 1bee002a2f57629408145ed650842477, type: 3}
+  cancelAction: {fileID: 2259437605184872894, guid: 1bee002a2f57629408145ed650842477, type: 3}
 --- !u!4 &299943111
 Transform:
   m_ObjectHideFlags: 0
@@ -3337,7 +3340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 340186926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299943110}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: Settings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &340186926
 MonoBehaviour:
   m_ObjectHideFlags: 0

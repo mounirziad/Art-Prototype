@@ -98,6 +98,15 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""ede58b94-b9d9-4e51-9a8b-c8fcdb087b0a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +362,17 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37324cd8-3bd7-4e09-9c09-bd891164830d"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -385,7 +405,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""a98e4ba7-3caf-4064-9e7d-6404ef498e63"",
-                    ""path"": ""<XInputController>/leftStick/up"",
+                    ""path"": ""<XInputController>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -396,7 +416,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""f9ab26fa-c7c1-4238-9c1e-1b641101cd43"",
-                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""path"": ""<XInputController>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -407,7 +427,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""353abb71-8b0e-4342-847f-24ec927183c0"",
-                    ""path"": ""<XInputController>/leftStick/left"",
+                    ""path"": ""<XInputController>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -418,7 +438,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""dd89dacd-4b9d-46dc-8ed7-23500e1ac738"",
-                    ""path"": ""<XInputController>/leftStick/right"",
+                    ""path"": ""<XInputController>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -441,6 +461,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
         m_PlayerControls_Point = m_PlayerControls.FindAction("Point", throwIfNotFound: true);
         m_PlayerControls_ScrollWheel = m_PlayerControls.FindAction("Scroll Wheel", throwIfNotFound: true);
         m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerControls_Cancel = m_PlayerControls.FindAction("Cancel", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -519,6 +540,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_Point;
     private readonly InputAction m_PlayerControls_ScrollWheel;
     private readonly InputAction m_PlayerControls_Pause;
+    private readonly InputAction m_PlayerControls_Cancel;
     public struct PlayerControlsActions
     {
         private @Player m_Wrapper;
@@ -531,6 +553,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
         public InputAction @Point => m_Wrapper.m_PlayerControls_Point;
         public InputAction @ScrollWheel => m_Wrapper.m_PlayerControls_ScrollWheel;
         public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
+        public InputAction @Cancel => m_Wrapper.m_PlayerControls_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -564,6 +587,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
         }
 
         private void UnregisterCallbacks(IPlayerControlsActions instance)
@@ -592,6 +618,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
         }
 
         public void RemoveCallbacks(IPlayerControlsActions instance)
@@ -665,6 +694,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
         void OnPoint(InputAction.CallbackContext context);
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
