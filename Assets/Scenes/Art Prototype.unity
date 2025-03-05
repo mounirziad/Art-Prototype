@@ -9882,7 +9882,7 @@ MonoBehaviour:
   doorAudio: {fileID: 961582083}
   doorSound: {fileID: 8300000, guid: 88328d11e599797448a44c79d3f34db4, type: 3}
   dadtalking: {fileID: 961582083}
-  dadSound: {fileID: 8300000, guid: 592ab634416285242b534cd75d88805e, type: 3}
+  dadSound: {fileID: 8300000, guid: 3f7eda06d14359f4a80fcfea2d8a62f3, type: 3}
   sneakmusic: {fileID: 2348629339637001112, guid: 2e2257da19518684db50b82c510f894d, type: 3}
   ThunderStrike: {fileID: 5285358398995116047, guid: cb510bb29fb8a2541b00048dca56cd61, type: 3}
   BaseMusic: {fileID: 355033286}
@@ -10467,8 +10467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2888af6457518340a89c9911fc5f94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivityX: 15
-  mouseSensitivityY: 15
+  mouseSensitivityX: 12
+  mouseSensitivityY: 12
   controllerSensitivityX: 100
   controllerSensitivityY: 100
   upperLookLimit: 80
