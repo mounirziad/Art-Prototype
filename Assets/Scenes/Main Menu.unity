@@ -2391,6 +2391,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383702521}
   m_CullTransparentMesh: 1
+--- !u!1 &387840235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387840237}
+  - component: {fileID: 387840236}
+  m_Layer: 0
+  m_Name: LightFlicker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &387840236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387840235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad9b54cc3ab2874681291bc93aca617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickeringLight: {fileID: 43274596}
+  minIntensity: 1
+  maxIntensity: 2
+  flickerSpeed: 1
+--- !u!4 &387840237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387840235}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.884, y: 3.031, z: -0.113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &403785649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -455657186317953426, guid: 8a94fc8f917bd14488117115093810d3, type: 3}
@@ -9618,7 +9666,6 @@ SceneRoots:
   - {fileID: 143469902}
   - {fileID: 1127761317}
   - {fileID: 1144100340}
-  - {fileID: 43274597}
   - {fileID: 1066307077}
   - {fileID: 1438271108}
   - {fileID: 1383334685}
@@ -9699,3 +9746,5 @@ SceneRoots:
   - {fileID: 1841596431}
   - {fileID: 414409775}
   - {fileID: 203856132}
+  - {fileID: 387840237}
+  - {fileID: 43274597}
